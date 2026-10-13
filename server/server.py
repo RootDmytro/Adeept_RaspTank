@@ -157,7 +157,7 @@ def app_ctrl():
     appconnect()
     setup()
     app_threading=threading.Thread(target=appconnect)         #Define a thread for FPV and OpenCV
-    app_threading.setDaemon(True)                             #'True' means it is a front thread,it would close when the mainloop() closes
+    app_threading.daemon = True                              #'True' means it is a daemon thread; it closes when the main loop exits
     app_threading.start()                                     #Thread starts
 
     while 1:
@@ -169,7 +169,7 @@ def app_ctrl():
         pass
 
 AppConntect_threading=threading.Thread(target=app_ctrl)         #Define a thread for FPV and OpenCV
-AppConntect_threading.setDaemon(True)                             #'True' means it is a front thread,it would close when the mainloop() closes
+AppConntect_threading.daemon = True                              #'True' means it is a daemon thread; it closes when the main loop exits
 AppConntect_threading.start()                                     #Thread starts
 
 
@@ -276,15 +276,15 @@ def run():
     findline.setup()
 
     info_threading=threading.Thread(target=info_send_client)    #Define a thread for FPV and OpenCV
-    info_threading.setDaemon(True)                             #'True' means it is a front thread,it would close when the mainloop() closes
+    info_threading.daemon = True                              #'True' means it is a daemon thread; it closes when the main loop exits
     info_threading.start()                                     #Thread starts
 
     ultra_threading=threading.Thread(target=ultra_send_client)    #Define a thread for FPV and OpenCV
-    ultra_threading.setDaemon(True)                             #'True' means it is a front thread,it would close when the mainloop() closes
+    ultra_threading.daemon = True                              #'True' means it is a daemon thread; it closes when the main loop exits
     ultra_threading.start()                                     #Thread starts
 
     findline_threading=threading.Thread(target=findline_thread)    #Define a thread for FPV and OpenCV
-    findline_threading.setDaemon(True)                             #'True' means it is a front thread,it would close when the mainloop() closes
+    findline_threading.daemon = True                              #'True' means it is a daemon thread; it closes when the main loop exits
     findline_threading.start()                                     #Thread starts
     #move.stand()
 
@@ -435,7 +435,7 @@ if __name__ == '__main__':
             print(ipaddr_check)
         except:
             ap_threading=threading.Thread(target=ap_thread)   #Define a thread for data receiving
-            ap_threading.setDaemon(True)                          #'True' means it is a front thread,it would close when the mainloop() closes
+            ap_threading.daemon = True                           #'True' means it is a daemon thread; it closes when the main loop exits
             ap_threading.start()                                  #Thread starts
 
             LED.colorWipe(0,16,50)
@@ -461,7 +461,7 @@ if __name__ == '__main__':
 
             fpv=FPV.FPV()
             fps_threading=threading.Thread(target=FPV_thread)         #Define a thread for FPV and OpenCV
-            fps_threading.setDaemon(True)                             #'True' means it is a front thread,it would close when the mainloop() closes
+            fps_threading.daemon = True                              #'True' means it is a daemon thread; it closes when the main loop exits
             fps_threading.start()                                     #Thread starts
             break
         except:
