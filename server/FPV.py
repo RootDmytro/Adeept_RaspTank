@@ -75,7 +75,7 @@ class FPV:
 
         font = cv2.FONT_HERSHEY_SIMPLEX
 
-        camera = picamera.PiCamera()
+        camera = picamera.picamera()
         config = camera.create_video_configuration({
             'size': (640, 480),
             'fps': 20,
